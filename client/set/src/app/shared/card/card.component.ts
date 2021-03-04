@@ -2,22 +2,20 @@ import { Component, OnInit, Input } from '@angular/core';
 import { setCard } from 'src/app/interface/set-card';
 
 @Component({
-  selector: 'app-card',
+  selector: 'shared-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
+
 export class CardComponent implements OnInit {
+
+  @Input() card: setCard;
+
   constructor() {}
 
-  @Input() card: setCard = {
-    id: 1,
-    properties: {
-      color: 'round',
-      shape: 'red',
-      amount: 1,
-      filling: 'striped',
-    },
-  };
-
   ngOnInit(): void {}
+
+  public cardClicked() {
+    console.warn('cko:', this.card.id);
+  }
 }

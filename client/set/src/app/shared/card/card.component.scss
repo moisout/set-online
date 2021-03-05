@@ -10,7 +10,17 @@
 
 //Color
 
+.Red {
+  background-color: red;
+}
 
+.Blue {
+  background-color: blue;
+}
+
+.Green {
+  background-color: green;
+}
 
 //Symbol
 
@@ -19,3 +29,16 @@
 
 
 //Shading
+
+.Solid {
+
+}
+
+.Striped{
+  background: repeating-linear-gradient(
+  to right,
+
+  #ffffff 10px,
+  #ffffff 20px
+);
+}

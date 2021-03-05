@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { setCard } from "src/app/interface/set-card";
+import { setCard } from 'src/app/interface/set-card';
 
 @Component({
   selector: 'app-practice',
@@ -25,7 +25,7 @@ export class PracticeComponent implements OnInit {
     },
     {
       id: 3,
-      color: 'Red',
+      color: 'Green',
       symbol: 'Diamond',
       shading: 'Open',
       number: 3,
@@ -37,7 +37,7 @@ export class PracticeComponent implements OnInit {
       shading: 'Solid',
       number: 1,
     },
-  ]
+  ];
 
   constructor() { }
 
@@ -47,31 +47,28 @@ export class PracticeComponent implements OnInit {
   FoundCombinations: Array<Array<number>>;
 
   ngOnInit(): void {
-    this.resetGame();
+    // this.resetGame();
   }
 
 
-  onCardClick(cardId: number)
-  {
+  onCardClick(cardId: number): void {
     this.SelectedCards.push(cardId);
-    
-    if(this.SelectedCards.length === 3)
-    {
+
+    if (this.SelectedCards.length === 3) {
       this.checkSelection();
     }
   }
 
-  checkSelection()
-  {
-    const indexOfValidated = this.PossibleCombinations.findIndex(possible => possible.sort().toString() === this.SelectedCards.sort().toString())
-    if(indexOfValidated !== -1)
-    {
-      this.FoundCombinations.push(this.PossibleCombinations[indexOfValidated])
+  checkSelection(): void {
+    const indexOfValidated = this.PossibleCombinations.findIndex(possible =>
+      possible.sort().toString() === this.SelectedCards.sort().toString()
+    );
+    if (indexOfValidated !== -1) {
+      this.FoundCombinations.push(this.PossibleCombinations[indexOfValidated]);
       this.PossibleCombinations.splice(indexOfValidated, 1);
-      
-      if(!this.PossibleCombinations.length)
-      {
-        //Win-Message
+
+      if (!this.PossibleCombinations.length) {
+        // Win-Message
         setTimeout(() => {
           this.resetGame();
         }, 5000);
@@ -79,20 +76,18 @@ export class PracticeComponent implements OnInit {
       }
 
       this.SelectedCards = [];
-      //Set found!
+      // Set found!
     }
-    else
-    {
+    else {
       this.SelectedCards = [];
-      //Set not found!
+      // Set not found!
     }
   }
 
-  resetGame()
-  {
+  resetGame(): void {
     this.SelectedCards = [];
     this.FoundCombinations = [];
-    this.PossibleCombinations = []; //ServiceToCall for possible
-    this.Cards = []; //ServiceToCall for Cards
+    this.PossibleCombinations = []; // ServiceToCall for possible
+    this.Cards = []; // ServiceToCall for Cards
   }
 }

@@ -1,4 +1,4 @@
-<div class="card" (click)="cardClicked()">
+<div class="card" [ngClass]="[this.card.color, this.card.shading]">
    <p>{{this.card.color}}</p>
    <p>{{this.card.shading}}</p>
    <p>{{this.card.symbol}}</p>

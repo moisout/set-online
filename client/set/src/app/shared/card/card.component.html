@@ -1,8 +1,8 @@
 <div class="card">
-
   <!--Diamond-->
-  <div *ngIf="card.symbol === 'Diamond'">
+  <div *ngIf="card.symbol === 'Diamond'" class="card-content">
     <svg
+      class="card-symbol"
       viewBox="198 274 254 104"
       *ngFor="let number of [].constructor(card.number)"
     >
@@ -11,45 +11,98 @@
         opacity="1"
         fill-opacity="1"
         [ngClass]="[card.color, card.shading]"
-      ></path>
+        [attr.fill]="
+          card.shading === 'Striped'
+            ? 'url(#Diamond_Pattern' + card.id + ')'
+            : undefined
+        "
+      />
+      <defs class="stripe-def">
+        <pattern
+          [id]="'Diamond_Pattern' + card.id"
+          patternUnits="userSpaceOnUse"
+          width="15"
+          height="15"
+          patternTransform="rotate(0)"
+        >
+          <line
+            class="stripe-line"
+            x1="0"
+            y="0"
+            x2="0"
+            y2="15"
+            stroke="#000000"
+            stroke-width="10"
+          />
+        </pattern>
+      </defs>
     </svg>
   </div>
 
   <!--Squiggle-->
-  <div *ngIf="card.symbol === 'Squiggle'">
+  <div *ngIf="card.symbol === 'Squiggle'" class="card-content">
     <svg
+      class="card-symbol"
       viewBox="-100 -50 200 100"
       *ngFor="let number of [].constructor(card.number)"
     >
       <path
         d="M -35 35 C -5 35, -5 20, 25 20 C 55 20, 50 35, 70 35 C 100 35, 75 -35, 35 -35 C 5 -35, 5 -20, -25 -20 C -55 -20, -50 -35, -70 -35 C -100 -35, -75 35, -35 35"
         [ngClass]="[card.color, card.shading]"
-      />
-    </svg>
-  </div>
-
-  <!--Oval-->
-  <div *ngIf="card.symbol === 'Oval'">
-    <svg
-      *ngFor="let number of [].constructor(card.number)"
-      viewBox="139.00000000000023 184.00000000000003 363.99999999999983 133.99999999999997"
-      opacity="1"
-      fill-opacity="1"
-    >
-      <path
-        d="M436.24 185C471.46 185 500 213.54 500 248.76C500 262.01 500 238.56 500 251.95C500 286.77 471.77 315 436.95 315C377.56 315 262.92 315 203.65 315C168.5 315 140 286.5 140 251.35C140 238.08 140 262.19 140 248.99C140 213.65 168.65 185 203.99 185C263.19 185 376.99 185 436.24 185Z"
-        [ngClass]="[card.color, card.shading]"
-        [attr.fill]="card.shading === 'Striped' ? 'url(#pattern_GDT8)' : undefined"
+        [attr.fill]="
+          card.shading === 'Striped'
+            ? 'url(#Squiggle_Pattern' + card.id + ')'
+            : undefined
+        "
       />
       <defs class="stripe-def">
         <pattern
-          id="pattern_GDT8"
+          [id]="'Squiggle_Pattern' + card.id"
           patternUnits="userSpaceOnUse"
           width="15"
           height="15"
           patternTransform="rotate(0)"
         >
-          <line class="stripe-line"
+          <line
+            class="stripe-line"
+            x1="0"
+            y="0"
+            x2="0"
+            y2="15"
+            stroke="#000000"
+            stroke-width="10"
+          />
+        </pattern>
+      </defs>
+    </svg>
+  </div>
+
+  <!--Oval-->
+  <div *ngIf="card.symbol === 'Oval'" class="card-content">
+    <svg
+      class="card-symbol"
+      viewBox="139.00000000000023 184.00000000000003 363.99999999999983 133.99999999999997"
+      *ngFor="let number of [].constructor(card.number)"
+    >
+      <path
+        d="M436.24 185C471.46 185 500 213.54 500 248.76C500 262.01 500 238.56 500 251.95C500 286.77 471.77 315 436.95 315C377.56 315 262.92 315 203.65 315C168.5 315 140 286.5 140 251.35C140 238.08 140 262.19 140 248.99C140 213.65 168.65 185 203.99 185C263.19 185 376.99 185 436.24 185Z"
+        [ngClass]="[card.color, card.shading]"
+        [attr.fill]="
+          card.shading === 'Striped'
+            ? 'url(#Oval_Pattern' + card.id + ')'
+            : undefined
+        "
+      />
+      <defs class="stripe-def">
+        <pattern
+          [id]="'Oval_Pattern' + card.id"
+          patternUnits="userSpaceOnUse"
+          width="15"
+          height="15"
+          patternTransform="rotate(0)"
+        >
+          <line
+            class="stripe-line"
             x1="0"
             y="0"
             x2="0"

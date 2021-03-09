@@ -13,20 +13,20 @@ export class PracticeComponent implements OnInit {
       id: 1,
       color: 'Red',
       symbol: 'Squiggle',
-      shading: 'Solid',
-      number: 1,
-    },
-    {
-      id: 1,
-      color: 'Blue',
-      symbol: 'Oval',
       shading: 'Striped',
-      number: 2,
+      number: 3,
     },
     {
-      id: 1,
-      color: 'Green',
+      id: 2,
+      color: 'Blue',
       symbol: 'Diamond',
+      shading: 'Open',
+      number: 3,
+    },
+    {
+      id: 3,
+      color: 'Green',
+      symbol: 'Oval',
       shading: 'Solid',
       number: 3,
     }
@@ -41,13 +41,11 @@ export class PracticeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.resetGame();
-    console.warn(
-      this.cardArray
-    )
   }
 
 
   onCardClick(cardId: number): void {
+    console.warn("clicked");
     this.SelectedCards.push(cardId);
 
     if (this.SelectedCards.length === 3) {

@@ -14,6 +14,5 @@ export class CardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-   console.warn(this.card)
   }
 }

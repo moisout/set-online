@@ -1,0 +1,10 @@
+.gameboard{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: min-content;
+    height: min-content;
+
+    .board-item {
+        padding: 5px;
+    }
+}

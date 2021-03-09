@@ -1,4 +1,1 @@
-<app-shared-card [card]="this.cardArray[0]"></app-shared-card>
-<app-shared-card [card]="this.cardArray[1]"></app-shared-card>
-<app-shared-card [card]="this.cardArray[2]"></app-shared-card>
-<app-shared-card [card]="this.cardArray[3]"></app-shared-card>
+<app-shared-card *ngFor="let card of cardArray" [card]="card"></app-shared-card>

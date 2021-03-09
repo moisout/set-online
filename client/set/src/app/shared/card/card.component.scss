@@ -1,44 +1,77 @@
 //Card
 
 .card {
-    height: 180px;
-    width: 120px;
-    border:solid 1px black;
-    border-radius: 8px;
-    text-align: center;
+  height: 180px;
+  width: 120px;
+  border: solid 1px black;
+  border-radius: 8px;
+  text-align: center;
 }
 
-//Color
+.Open {
+  fill: transparent;
 
-.Red {
-  background-color: red;
+  &.Red {
+    stroke: red;
+    stroke-width: 4px;
+  }
+
+  &.Blue {
+    stroke: blue;
+    stroke-width: 4px;
+  }
+
+  &.Green {
+    stroke: green;
+    stroke-width: 4px;
+  }
 }
 
-.Blue {
-  background-color: blue;
+.Striped {
+  &.Red {
+    stroke: red;
+    stroke-width: 4px;
+
+    ~ .stripe-def {
+      .stripe-line {
+        stroke: red;
+      }
+    }
+  }
+
+  &.Blue {
+    stroke: blue;
+    stroke-width: 4px;
+
+    ~ .stripe-def {
+      .stripe-line {
+        stroke: blue;
+      }
+    }
+  }
+
+  &.Green {
+    stroke: green;
+    stroke-width: 4px;
+
+    ~ .stripe-def {
+      .stripe-line {
+        stroke: green;
+      }
+    }
+  }
 }
-
-.Green {
-  background-color: green;
-}
-
-//Symbol
-
-
-//Number
-
-
-//Shading
 
 .Solid {
+  &.Red {
+    fill: red;
+  }
 
-}
+  &.Blue {
+    fill: blue;
+  }
 
-.Striped{
-  background: repeating-linear-gradient(
-  to right,
-
-  #ffffff 10px,
-  #ffffff 20px
-);
+  &.Green {
+    fill: green;
+  }
 }

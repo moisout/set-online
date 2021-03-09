@@ -13,30 +13,23 @@ export class PracticeComponent implements OnInit {
       id: 1,
       color: 'Red',
       symbol: 'Squiggle',
-      shading: 'Striped',
+      shading: 'Solid',
       number: 1,
     },
     {
-      id: 2,
+      id: 1,
       color: 'Blue',
-      symbol: 'Squiggle',
-      shading: 'Solid',
+      symbol: 'Oval',
+      shading: 'Striped',
       number: 2,
     },
     {
-      id: 3,
+      id: 1,
       color: 'Green',
       symbol: 'Diamond',
-      shading: 'Open',
-      number: 3,
-    },
-    {
-      id: 4,
-      color: 'Blue',
-      symbol: 'Diamond',
       shading: 'Solid',
-      number: 1,
-    },
+      number: 3,
+    }
   ];
 
   constructor() { }
@@ -48,6 +41,9 @@ export class PracticeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.resetGame();
+    console.warn(
+      this.cardArray
+    )
   }
 
 

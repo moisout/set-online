@@ -20,14 +20,14 @@ for (let color = 0; color < combinationCount; color++) {
         let shadingString = getStringByNumber(shading, ["Striped", "Solid", "Open"]);
 
         const cardString = `
-new CardDto
-{
-  Id = ${index},
-  Color = Color.${colorString},
-  Number = ${number},
-  Shading = Shading.${shadingString},
-  Symbol = Symbol.${symbolString}
-}`;
+      new CardDto
+      {
+        Id = ${index},
+        Color = "${colorString}",
+        Number = ${number + 1},
+        Shading = "${shadingString}",
+        Symbol = "${symbolString}"
+      }`;
         cardsArray.push(cardString);
         index++;
       }

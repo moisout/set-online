@@ -19,6 +19,9 @@ namespace set.service.Common
         if (!cardDeckList.Any(e => e.Id == randomNumber))
         {
           cardDeckList.Add(CardCollection.Cards[randomNumber]);
+        } else
+        {
+          i--;
         }
       }
       return cardDeckList;

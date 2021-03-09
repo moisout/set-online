@@ -11,6 +11,8 @@ export class CardComponent implements OnInit {
 
   @Input() card: setCard;
 
+  @Input() selected: boolean;
+
   constructor() {}
 
   ngOnInit(): void {

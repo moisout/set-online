@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [ngClass]="selected ? 'selected' : undefined">
   <!--Diamond-->
   <div *ngIf="card.symbol === 'Diamond'" class="card-content">
     <svg

@@ -5,8 +5,14 @@
   width: 120px;
   border: solid 1.5px black;
   border-radius: 8px;
+  transition: box-shadow 200ms ease-in-out, background-color 300ms ease-in-out;
 
-  :hover {
+  &.selected {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background-color: #c9e0ff93;
+  }
+
+  &:hover:not(.selected) {
     cursor: pointer;
   }
 

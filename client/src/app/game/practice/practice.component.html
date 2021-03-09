@@ -1,3 +1,9 @@
 <div class="gameboard">
-    <app-shared-card class="board-item" *ngFor="let card of cardArray" [card]="card" (click)="this.onCardClick(card.id)"></app-shared-card>
+  <app-shared-card
+    class="board-item"
+    *ngFor="let card of cards"
+    [card]="card"
+    [selected]="isSelectedCard(card.id)"
+    (click)="onCardClick(card.id)"
+  ></app-shared-card>
 </div>

@@ -1,150 +1,77 @@
 import { Component, OnInit } from '@angular/core';
 import { setCard } from 'src/app/interface/set-card';
+import { PracticeService } from 'src/app/service/practice.service';
 
 @Component({
   selector: 'app-practice',
   templateUrl: './practice.component.html',
-  styleUrls: ['./practice.component.scss']
+  styleUrls: ['./practice.component.scss'],
 })
 export class PracticeComponent implements OnInit {
+  cardArray: Array<setCard> = [];
 
-  cardArray: Array<setCard> = [
-    {
-      id: 1,
-      color: 'Red',
-      symbol: 'Squiggle',
-      shading: 'Striped',
-      number: 1,
-    },
-    {
-      id: 2,
-      color: 'Blue',
-      symbol: 'Diamond',
-      shading: 'Open',
-      number: 1,
-    },
-    {
-      id: 3,
-      color: 'Green',
-      symbol: 'Oval',
-      shading: 'Solid',
-      number: 1,
-    },
-    {
-      id: 4,
-      color: 'Red',
-      symbol: 'Squiggle',
-      shading: 'Striped',
-      number: 2,
-    },
-    {
-      id: 5,
-      color: 'Blue',
-      symbol: 'Diamond',
-      shading: 'Open',
-      number: 2,
-    },
-    {
-      id: 6,
-      color: 'Green',
-      symbol: 'Oval',
-      shading: 'Solid',
-      number: 2,
-    },
-    {
-      id: 7,
-      color: 'Red',
-      symbol: 'Squiggle',
-      shading: 'Striped',
-      number: 3,
-    },
-    {
-      id: 8,
-      color: 'Blue',
-      symbol: 'Diamond',
-      shading: 'Open',
-      number: 3,
-    },
-    {
-      id: 9,
-      color: 'Green',
-      symbol: 'Oval',
-      shading: 'Solid',
-      number: 3,
-    },
-    {
-      id: 10,
-      color: 'Blue',
-      symbol: 'Diamond',
-      shading: 'Solid',
-      number: 3,
-    },
-    {
-      id: 11,
-      color: 'Green',
-      symbol: 'Squiggle',
-      shading: 'Open',
-      number: 3,
-    },
-    {
-      id: 12,
-      color: 'Red',
-      symbol: 'Oval',
-      shading: 'Open',
-      number: 3,
-    },
-  ];
+  constructor(private practiceService: PracticeService) {}
 
-  constructor() { }
-
-  Cards: Array<setCard>;
-  SelectedCards: Array<number>;
-  PossibleCombinations: Array<Array<number>>;
-  FoundCombinations: Array<Array<number>>;
+  cards: Array<setCard>;
+  selectedCards: Array<number>;
+  possibleSets: Array<Array<number>>;
+  foundCombinations: Array<Array<number>>;
 
   ngOnInit(): void {
-    // this.resetGame();
+    this.resetGame();
   }
 
+  isSelectedCard(cardId: number): boolean {
+    return this.selectedCards.some((e) => e === cardId);
+  }
 
   onCardClick(cardId: number): void {
-    console.warn("clicked");
-    this.SelectedCards.push(cardId);
+    const selectedIndex = this.selectedCards.indexOf(cardId);
+    if (selectedIndex !== -1) {
+      this.selectedCards.splice(selectedIndex, 1);
+    } else {
+      this.selectedCards.push(cardId);
 
-    if (this.SelectedCards.length === 3) {
-      this.checkSelection();
+      if (this.selectedCards.length === 3) {
+        this.checkSelection();
+      }
     }
   }
 
   checkSelection(): void {
-    const indexOfValidated = this.PossibleCombinations.findIndex(possible =>
-      possible.sort().toString() === this.SelectedCards.sort().toString()
+    const indexOfValidated = this.possibleSets.findIndex(
+      (possible) =>
+        possible.sort().toString() === this.selectedCards.sort().toString()
     );
     if (indexOfValidated !== -1) {
-      this.FoundCombinations.push(this.PossibleCombinations[indexOfValidated]);
-      this.PossibleCombinations.splice(indexOfValidated, 1);
+      this.foundCombinations.push(this.possibleSets[indexOfValidated]);
+      this.possibleSets.splice(indexOfValidated, 1);
 
-      if (!this.PossibleCombinations.length) {
+      if (!this.possibleSets.length) {
         // Win-Message
+        console.log('You won!');
         setTimeout(() => {
           this.resetGame();
         }, 5000);
         return;
       }
 
-      this.SelectedCards = [];
+      this.selectedCards = [];
       // Set found!
-    }
-    else {
-      this.SelectedCards = [];
+      console.log('Set found!');
+    } else {
+      this.selectedCards = [];
       // Set not found!
+      console.log('Set not found!');
     }
   }
 
   resetGame(): void {
-    this.SelectedCards = [];
-    this.FoundCombinations = [];
-    this.PossibleCombinations = []; // ServiceToCall for possible
-    this.Cards = []; // ServiceToCall for Cards
+    this.selectedCards = [];
+    this.foundCombinations = [];
+    this.practiceService.getPracticeTable().subscribe((result) => {
+      this.possibleSets = result.possibleSets;
+      this.cards = result.cards;
+    });
   }
 }

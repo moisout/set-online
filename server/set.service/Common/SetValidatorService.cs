@@ -41,11 +41,11 @@ namespace set.service.Common
 
     public bool IsSet(CardDto card1, CardDto card2, CardDto card3)
     {
-      bool colorCondition = FulfillsCondition(card1.Color.ToString(), card2.Color.ToString(), card3.Color.ToString());
+      bool colorCondition = FulfillsCondition(card1.Color, card2.Color, card3.Color);
 
-      bool symbolCondition = FulfillsCondition(card1.Symbol.ToString(), card2.Symbol.ToString(), card3.Symbol.ToString());
+      bool symbolCondition = FulfillsCondition(card1.Symbol, card2.Symbol, card3.Symbol);
 
-      bool shadingCondition = FulfillsCondition(card1.Shading.ToString(), card2.Shading.ToString(), card3.Shading.ToString());
+      bool shadingCondition = FulfillsCondition(card1.Shading, card2.Shading, card3.Shading);
 
       bool numberCondition = FulfillsCondition(card1.Number.ToString(), card2.Number.ToString(), card3.Number.ToString());
 

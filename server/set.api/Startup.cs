@@ -28,6 +28,7 @@ namespace set.api
       services.AddControllers();
       services.AddScoped<ICardGeneratorService, CardGeneratorService>();
       services.AddScoped<IPracticeService, PracticeService>();
+      services.AddScoped<ISetValidatorService, SetValidatorService>();
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "set.api", Version = "v1" });

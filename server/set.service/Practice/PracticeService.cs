@@ -12,17 +12,22 @@ namespace set.service.Practice
 {
   public class PracticeService : IPracticeService
   {
-    public PracticeService(ICardGeneratorService cardGeneratorService)
+    private ICardGeneratorService CardGeneratorService;
+    private ISetValidatorService SetValidatorService;
+
+    public PracticeService(ICardGeneratorService cardGeneratorService, ISetValidatorService setValidatorService)
     {
       CardGeneratorService = cardGeneratorService;
+      SetValidatorService = setValidatorService;
     }
-
-    private ICardGeneratorService CardGeneratorService;
 
     public PracticeTableDto GetPracticeTable()
     {
       int cardCount = 12;
-      List<CardDto> CardList = CardGeneratorService.GetRandomCardDeck(cardCount);
+      List<CardDto> cardList = CardGeneratorService.GetRandomCardDeck(cardCount);
+      List<int[]> validSetList = SetValidatorService.GetValidFromList(cardList);
+
+      return new PracticeTableDto(cardList, validSetList);
     }
   }
 }

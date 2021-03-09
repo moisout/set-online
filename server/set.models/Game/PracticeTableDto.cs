@@ -9,8 +9,14 @@ namespace set.models.Game
 {
   public class PracticeTableDto
   {
-    List<CardDto> Cards { get; set; }
+    public PracticeTableDto(List<CardDto> cards, List<int[]> possibleSets)
+    {
+      Cards = cards;
+      PossibleSets = possibleSets;
+    }
 
-    int[,,] PossibleSets { get; set; }
+    public List<CardDto> Cards { get; set; }
+
+    public List<int[]> PossibleSets { get; set; }
   }
 }

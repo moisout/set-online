@@ -8,7 +8,7 @@ namespace set.service.Common
 {
   public class CardGeneratorService: ICardGeneratorService
   {
-    List<CardDto> GetRandomCardDeck(int cardCount)
+    public List<CardDto> GetRandomCardDeck(int cardCount)
     {
       Random random = new Random();
       List<CardDto> cardDeckList = new List<CardDto>();

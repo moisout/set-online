@@ -9,6 +9,6 @@ namespace set.service.Common.Interface
 {
   public interface ISetValidatorService
   {
-    int[,,] GetValidFromDeck(List<CardDto> cardList);
+    public List<int[]> GetValidFromList(List<CardDto> cardList);
   }
 }

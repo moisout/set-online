@@ -14,5 +14,3 @@ COPY --from=node /home/app/dist/set /usr/share/nginx/html
 COPY ./client/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 8082
-
-CMD "nginx -g 'daemon off;'"

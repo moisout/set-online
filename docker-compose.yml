@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  set-api:
+    container_name: set-api
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.Api
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/data
+    ports:
+      - 9002:80

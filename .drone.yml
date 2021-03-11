@@ -1,0 +1,38 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: publish frontend
+  image: plugins/docker
+  settings:
+    dockerfile: Dockerfile.Web
+    repo: mauriceo/set-web
+    tags:
+      - latest
+    username: 
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    branch:
+      - main
+    event:
+      - push
+
+- name: publish backend
+  image: plugins/docker
+  settings:
+    dockerfile: Dockerfile.Api
+    repo: mauriceo/set-api
+    tags:
+      - latest
+    username: 
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    branch:
+      - main
+    event:
+      - push

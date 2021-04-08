@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { setCard } from 'src/app/interface/set-card';
 import { PracticeService } from 'src/app/service/practice.service';
 
@@ -10,7 +11,7 @@ import { PracticeService } from 'src/app/service/practice.service';
 export class PracticeComponent implements OnInit {
   cardArray: Array<setCard> = [];
 
-  constructor(private practiceService: PracticeService) {}
+  constructor(private practiceService: PracticeService, private toastr: ToastrService) {}
 
   cards: Array<setCard>;
   selectedCards: Array<number>;
@@ -48,8 +49,7 @@ export class PracticeComponent implements OnInit {
       this.possibleSets.splice(indexOfValidated, 1);
 
       if (!this.possibleSets.length) {
-        // Win-Message
-        console.log('You won!');
+        this.toastr.success('Nice', 'Du hast alle Sets gefunden! Setze Spiel zurück', {timeOut: 2000});
         setTimeout(() => {
           this.resetGame();
         }, 5000);
@@ -57,12 +57,10 @@ export class PracticeComponent implements OnInit {
       }
 
       this.selectedCards = [];
-      // Set found!
-      console.log('Set found!');
+      this.toastr.success('Top', 'Set gefunden', {timeOut: 1000});
     } else {
       this.selectedCards = [];
-      // Set not found!
-      console.log('Set not found!');
+      this.toastr.error('Nope', 'Kein Set gefunden', {timeOut: 1000});
     }
   }
 
